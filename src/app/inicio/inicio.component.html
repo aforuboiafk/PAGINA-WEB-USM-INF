@@ -1,0 +1,24 @@
+<app-hero 
+    height="500px"
+    backgroundImage="images/fondo-campus/fondo_viña.png"
+    title="Departamento de Electrónica e Informática"
+    subtitle="Sede Viña del Mar">
+</app-hero>
+<div class="content">
+    <div class="noticias">
+        <h2>Noticias</h2>
+        <h3>
+            <a href="">
+                Ver todo
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </h3>
+    </div>
+    <!-- div noticias -->
+    <div class="cards">
+        <div *ngFor="let card of cards" class="card">
+            <h4>{{ card.title }}</h4>
+            <span>{{ card.date }}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+.card {
+    position: relative;
+    border-radius: 10px !important;
+    border: none !important;
+    height: 260px;
+    max-width: 300px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.card-body__usm {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background-color: var(--azul);
+    color: white;
+    transform: translateY(260px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-body__usm {
+    transform: translateY(0);
+}
+
+h3 {
+    margin: 0;
+    font-family: var(--primary);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.hover-content {
+    height: 260px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .hover-content {
+    opacity: 1;
+}
+
+p {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.title {
+    font-style: italic;
+}
+
+strong {
+    font-weight: 600;
+}

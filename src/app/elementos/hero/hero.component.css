@@ -1,0 +1,32 @@
+.hero {
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+}
+
+.content-bottom {
+    position: absolute;
+    bottom: 40px;
+}
+
+h1 {
+    border-left: 5px solid var(--amarillo);
+    padding-left: 9px;
+    color: white;
+}
+
+h3 {
+    margin-top: -10px;
+    padding-left: 14px;
+    color: white;
+}

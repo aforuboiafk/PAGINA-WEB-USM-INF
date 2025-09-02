@@ -1,0 +1,98 @@
+.hero {
+    background-image: url('../../assets/images/fondo-campus/fondo_viña.png');
+    background-size: auto;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+.content{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    border-left: 5px solid var(--amarillo);
+    padding-left: 9px;
+    color: white;
+}
+.hero h3 {
+    margin-top: -10px;
+    margin-left: 14px;
+    color: white;
+}
+
+.noticias {
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.noticias h3,h2{
+    color: var(--primary);
+    margin: auto 0;
+}
+.noticias a{
+    text-decoration: none;
+    color: var(--primary);
+
+}
+
+.cards {
+    --grid-column-gap: 30px;
+    --grid-row-gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: var(--grid-column-gap);
+    grid-row-gap: var(--grid-row-gap);
+    align-items: stretch;
+}
+
+.card {
+    background-color: #fff;
+    padding: 15px 30px;
+    height: 400px;
+    border: 1px solid var(--e-global-color-3ec4393);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--wp--preset--shadow--natural);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    background-image: url('../../assets/images/fondos-textura/fondo_textura_1.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.card h4{
+    color: white;
+    margin-top: auto;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--amarillo);
+    padding-left: 9px;
+}
+.card span{
+    color: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--wp--preset--shadow--deep);
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 767px) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
