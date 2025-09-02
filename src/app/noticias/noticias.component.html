@@ -1,1 +1,18 @@
-<p>noticias works!</p>
+<app-hero
+    height="370px"
+     backgroundImage="images/fotografias/SVM/svm_2.jpg"
+    title="Noticias">
+</app-hero>
+ 
+<div class="content">
+    <div class="news-grid">
+        <app-notice-card
+            *ngFor="let notice of notices"
+            [title]="notice.title"
+            [description]="notice.description"
+            [date]="notice.date"
+            [image]="notice.image"
+            [category]="notice.category">
+        </app-notice-card>
+    </div>
+</div>

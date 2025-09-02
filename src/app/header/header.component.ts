@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 export interface MenuItem {
   name: string;
@@ -10,18 +12,21 @@ export interface MenuItem {
 
 @Component({
   selector: 'app-header',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 
 export class HeaderComponent {
+
+  faCaretDown = faCaretDown;
   
   socialLinks = [
     {
       name: 'Facebook',
       url: 'https://facebook.com/usm',
-      img: 'logo_facebook.svg'
+      img: '../../../assets/icons/logo_facebook.svg'
     },
     {
       name: 'Instagram',
@@ -53,15 +58,15 @@ export class HeaderComponent {
     { name: 'Quiénes somos', url: '/quienes-somos' },
     { name: 'Admisión', url: '/admision' },
     {
-      name: 'Carreras',
+      name: 'Información',
       url: '#',
       submenu: [
+        { name: 'Ingeniería en Informática', url: '/carreras/ingenieria-en-informatica' },
+        { name: 'Técnico Universitario en Informática', url: '/carreras/tecnico-universitario' },
         {
           name: 'Práctica',
           url: '/practica'
         },
-        { name: 'Ingeniería en Informática', url: '/carreras/ingenieria-en-informatica' },
-        { name: 'Técnico Universitario en Informática', url: '/carreras/tecnico-universitario' },
         { name: 'Titulación', url: '/titulacion' },
         { name: 'Traslado', url: '/traslado' },
 

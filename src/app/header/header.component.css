@@ -3,9 +3,8 @@
   background-color: var(--azul);
   padding: 10px;
   height: 20px;
-  
-  
 }
+
 .barra-superior-content {
   max-width: 1200px;
   display: flex;
@@ -19,7 +18,6 @@
   font-size: 11px;
   font-family: var(--font-primary);
   font-weight: 700;
-
 }
 
 .link-div{
@@ -45,10 +43,11 @@
 .barra-inferior {
     background-color: white;
     padding: 10px;
-    height: 100px;
-  }
-  
-  .barra-inferior-content {
+    height: 80px;
+    display: flex;
+}
+
+.barra-inferior-content {
     width: 100%;
     max-width: 1200px;
     display: flex;
@@ -58,7 +57,17 @@
 }
 
 .logo-div{
-  height: 70px;
+  display: flex;
+}
+
+.logo-div hr {
+  height: 50px;
+  margin: auto 10px;
+}
+
+.logo-div img {
+  height: 50px;
+  margin-right: 10px;
 }
 
 .menu-div {
@@ -67,43 +76,44 @@
   align-items: center;
 }
 
+/* Base styles for all menu links */
 .menu-div a {
   position: relative;
   display: flex;
   align-items: center;
   padding: 13px 0;
   margin: 0 var(--e-nav-menu-horizontal-menu-item-margin);
-  font-family: "Montserrat", Sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #3B424C;
+  color: var(--primary);
   text-decoration: none;
   white-space: nowrap;
   transition: .4s;
   line-height: 20px;
 }
 
-.menu-div a:before,
-.menu-div a:after {
+/* Underline effect ONLY for main menu links */
+.menu-link:before,
+.menu-link:after {
   content: '';
   position: absolute;
   display: block;
-  background-color: var(--amarillo);
+  background-color: var(--azul);
   transition: transform 0.3s cubic-bezier(.58,.3,.005,1);
   transform: scale(0);
 }
 
-.menu-div a:hover {
+.menu-link:hover {
   color: var(--azul);
 }
 
-.menu-div a:hover:before,
-.menu-div a:hover:after {
+.menu-link:hover:before,
+.menu-link:hover:after {
   transform: scale(1);
 }
 
-/* Optional: Add underline effect */
-.menu-div a:after {
+/* Underline effect */
+.menu-link:after {
   height: 2px;
   bottom: 0;
   left: 0;
@@ -126,13 +136,13 @@
   transition: transform 0.3s ease;
 }
 
-
-
 .submenu {
   position: absolute;
   top: 100%;
   left: 0;
-  background: white;
+  background: var(--azul);
+  border-radius: 10px;
+  margin-top: 10px;
   min-width: 200px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   opacity: 0;
@@ -150,22 +160,35 @@
 
 .submenu-item {
   display: block;
-  padding: 10px 20px;
-  color: var(--text);
-  border-bottom: 1px solid var(--gris-6);
+  color: white!important;
+  border-bottom: 1px solid var(--azul-oscuro);
   transition: background 0.3s ease;
 }
 
-.submenu-item:hover {
-  background: var(--gris-8);
-  color: var(--accent);
+.submenu-item:last-child {
+  border-bottom: none;
 }
 
-:host {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: white;
+.submenu a{
+  color: white !important;
+  padding: 10px 15px;
+}
+
+.submenu-item:hover {
+  background: var(--azul-oscuro);
+}
+
+.caret-down {
+  font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+  :host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+  }
 }

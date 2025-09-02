@@ -1,0 +1,14 @@
+<div class="notice-card">
+    <div class="notice-image" [style.backgroundImage]="'url(' + image + ')'">
+        <span class="notice-category">{{ category }}</span>
+    </div>
+    <div class="notice-content">
+        <span class="notice-date">{{ formattedDate }}</span>
+        <h3>{{ title }}</h3>
+        <p>{{ description }}</p>
+        <a href="#" class="read-more">
+            Leer más
+            <span class="arrow">→</span>
+        </a>
+    </div>
+</div>

@@ -1,14 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HeroComponent } from '../elementos/hero/hero.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import { EventosComponent } from "../elementos/eventos/eventos.component";
+
 
 @Component({
   selector: 'app-inicio',
-  imports: [CommonModule, HeroComponent],
+  imports: [CommonModule, HeroComponent, FontAwesomeModule, EventosComponent],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
 export class InicioComponent {
+
+  faArrowCircleRight = faArrowCircleRight;
+
   cards = [
     { 
       title: 'Card 1', 

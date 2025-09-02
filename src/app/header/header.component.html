@@ -2,34 +2,33 @@
     <div class="col-12 barra-superior">
         <div class="barra-superior-content">
             <div class="link-div">
-                <a href="">USM.cl</a>
+                <a href="https://usm.cl" target="_blank">USM.cl</a>
             </div>
             <div class="social-media">
-                    <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank">
-                        <img [src]="'/assets/icons/' + link.img" alt="{{ link.name }}"/>
-                    </a>
+                <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank">
+                    <img [src]="'/assets/icons/' + link.img" [alt]="link.name"/>
+                </a>
             </div>
         </div>
     </div>
     <div class="col-12 barra-inferior">
         <div class="barra-inferior-content">
             <div class="logo-div">
-                <img src="../../assets/images/marca-horizontal/version horizontal.jpg" alt="Logo USM"/>
-                <span class="logo-divider" style="margin: 0 16px; border-left: 2px solid #ccc; height: 40px; display: inline-block; vertical-align: middle;"></span>
-                <img src="/assets/images/marca-vertical/version vertical.jpg" alt="Logo USM"/>
+                <img src="/assets/images/marca-vertical/marca-vertical.png" alt="Logo USM Horizontal"/>
+                <hr>
+                <img src="/assets/images/ELINF/Logo-ELINF.png" alt="Logo ELINF"/>
             </div>
             <div class="menu-div">
-                <div class="menu-item" *ngFor="let menuItem of menuItems">
-                    <a [href]="menuItem.url" [class.has-submenu]="menuItem.submenu">
-                        {{ menuItem.name }}
-                        <span class="submenu-arrow" *ngIf="menuItem.submenu">▼</span>
+                <div *ngFor="let item of menuItems" class="menu-item">
+                    <a [href]="item.url" class="menu-link">{{ item.name }}
+                        <fa-icon  [icon]="faCaretDown" *ngIf="item.submenu" class="caret-down"></fa-icon>
                     </a>
-                    <div class="submenu" *ngIf="menuItem.submenu">
-                        <a *ngFor="let subItem of menuItem.submenu" 
-                           [href]="subItem.url"
-                           class="submenu-item">
-                            {{ subItem.name }}
-                        </a>
+                    <div *ngIf="item.submenu" class="submenu">
+                        <div *ngFor="let subitem of item.submenu" class="submenu-item">
+                            <a [href]="subitem.url">{{ subitem.name }}
+
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,149 @@
+.eventos-container {
+    height: 620px;
+    padding: 40px 0;
+    background-image: url('../../../assets/images/fondo-campus/fondo_vina.png');
+    background-size: contain;
+    background-position: center;
+    position: relative;
+}
+
+.eventos-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Adjust opacity as needed */
+    z-index: 0;
+}
+
+.eventos-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+.eventos-container h2 {
+    color: white;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.evento-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.evento-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+}
+
+.evento-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-color: var(--azul-usm);
+}
+
+.modality-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.modality-presencial {
+    background: var(--verde-usm);
+    color: white;
+}
+
+.modality-virtual {
+    background: var(--amarillo-usm);
+    color: var(--azul-oscuro);
+}
+
+.modality-híbrida {
+    background: var(--azul-oscuro);
+    color: white;
+}
+
+.evento-content {
+    padding: 24px;
+}
+
+.evento-content h3 {
+    color: var(--azul-oscuro);
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+.evento-details {
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--gris-oscuro);
+    font-size: 14px;
+}
+
+.icon {
+    font-size: 16px;
+}
+
+.info-button {
+    width: 100%;
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.info-button:hover {
+    background: var(--azul-oscuro);
+}
+
+@media (max-width: 768px) {
+    .eventos-container {
+        height: auto;
+        padding: 30px 0;
+    }
+    
+    .eventos-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .eventos-container h2 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .eventos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

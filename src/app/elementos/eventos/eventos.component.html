@@ -1,0 +1,32 @@
+<div class="eventos-container">
+    <div class="content">
+
+        <h2>Eventos</h2>
+        <div class="eventos-grid">
+            <div *ngFor="let event of events" class="evento-card">
+                <div class="evento-image" [style.backgroundImage]="'url(' + event.image + ')'">
+                    <span class="modality-badge" [class]="'modality-' + event.modality.toLowerCase()">
+                        {{ event.modality }}
+                    </span>
+                </div>
+                <div class="evento-content">
+                <h3>{{ event.title }}</h3>
+                <div class="evento-details">
+                    <div class="detail-item">
+                        <fa-icon [icon]="faMapMarkerAlt" class="icon"></fa-icon>
+                        <span>{{ getFormattedDate(event.date) }}</span>
+                    </div>
+                    <div class="detail-item">
+                        <fa-icon [icon]="faClock" class="icon"></fa-icon>
+                        <span>{{ event.hour }}</span>
+                    </div>
+                </div>
+                <button class="info-button">
+                    Más Información
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>

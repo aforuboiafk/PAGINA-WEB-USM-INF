@@ -1,18 +1,17 @@
 <app-hero 
     height="500px"
-    backgroundImage="images/fondo-campus/fondo_viña.png"
-    title="Departamento de Electrónica e Informática"
+    backgroundImage="images/fotografias/SVM/svm_4.jpg"
+    title="Departamento de Electrotecnia e Informática"
     subtitle="Sede Viña del Mar">
 </app-hero>
 <div class="content">
     <div class="noticias">
-        <h2>Noticias</h2>
-        <h3>
-            <a href="">
-                Ver todo
-                <i class="fas fa-arrow-right"></i>
-            </a>
-        </h3>
+        <h2>
+           Noticias</h2>
+        <a href="/noticias">
+            Ver todo
+            <fa-icon [icon]="faArrowCircleRight" class="icon"></fa-icon>
+        </a>
     </div>
     <!-- div noticias -->
     <div class="cards">
@@ -21,4 +20,6 @@
             <span>{{ card.date }}</span>
         </div>
     </div>
+
 </div>
+<app-eventos></app-eventos>

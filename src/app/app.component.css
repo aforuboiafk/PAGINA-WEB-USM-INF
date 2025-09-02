@@ -1,6 +1,12 @@
 :host {
   display: block;
-  padding-top: 150px; /* Adjust this value based on your header height */
+  padding-top: 0;
+}
+
+@media (max-width: 1024px) {
+  :host {
+    padding-top: 150px;
+  }
 }
 
 router-outlet {
