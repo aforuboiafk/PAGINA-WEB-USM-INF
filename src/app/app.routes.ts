@@ -10,6 +10,8 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { AdmisionComponent } from './admision/admision.component';
 import { CarreraComponent } from './carrera/carrera.component';
+import { IbtCarreraComponent } from './ibt-carrera/ibt-carrera.component';
+import { TuCarreraComponent } from './tu-carrera/tu-carrera.component';
 
 export const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -25,8 +27,8 @@ export const routes: Routes = [
   {
     path: 'carreras',
     children: [
-      { path: 'ingenieria-en-informatica', component: CarreraComponent },
-      { path: 'tecnico-universitario', component: CarreraComponent }
+      { path: 'ingenieria-en-informatica', component: IbtCarreraComponent },
+      { path: 'tecnico-universitario', component: TuCarreraComponent }
     ]
   },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },

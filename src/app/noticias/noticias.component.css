@@ -1,3 +1,6 @@
+.content {
+    padding: 0 10px;
+}
 .filters {
     display: flex;
     justify-content: center;

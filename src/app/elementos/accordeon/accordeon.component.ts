@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-accordeon',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './accordeon.component.html',
   styleUrls: ['./accordeon.component.css'],
   animations: [
@@ -27,10 +28,14 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class AccordeonComponent {
+  faChevronUp = faChevronUp;
+  faChevronDown = faChevronDown;
+
   @Input() title: string = '';
   isExpanded: boolean = false;
 
   toggleAccordion() {
     this.isExpanded = !this.isExpanded;
   }
-}
+}import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+

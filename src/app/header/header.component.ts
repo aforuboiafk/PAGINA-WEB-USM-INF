@@ -2,11 +2,20 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+interface SocialLink {
+  name: string;
+  url: string;
+  img: string;
+}
 
 export interface MenuItem {
   name: string;
   url: string;
   submenu?: MenuItem[];
+  isOpen?: boolean;
 }
 
 
@@ -15,14 +24,17 @@ export interface MenuItem {
   standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 
 export class HeaderComponent {
-
   faCaretDown = faCaretDown;
-  
-  socialLinks = [
+  faBars = faBars;
+  faX = faX;
+
+  isMobileMenuOpen = false;
+
+  socialLinks: SocialLink[] = [
     {
       name: 'Facebook',
       url: 'https://facebook.com/usm',
@@ -76,4 +88,18 @@ export class HeaderComponent {
     { name: 'Noticias', url: '/noticias' },
     { name: 'Contacto', url: '/contacto' }
   ];
+
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
+    // Close all submenus
+    this.menuItems.forEach(item => item.isOpen = false);
+  }
+
+  toggleSubmenu(item: MenuItem) {
+    item.isOpen = !item.isOpen;
+  }
 }

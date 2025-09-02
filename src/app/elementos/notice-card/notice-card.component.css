@@ -64,7 +64,7 @@ p {
 
 .read-more {
     text-decoration: none;
-    color: var(--azul-usm);
+    color: var(--azul);
     font-weight: 500;
     display: flex;
     align-items: center;

@@ -1,7 +1,5 @@
 .content{
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 0 10px;
 }
 
 .titulo {
@@ -17,4 +15,14 @@
     color: white;
     text-align: center;
     margin: 0
+}
+
+.titulo2 {
+    background-color: var(--amarillo);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }

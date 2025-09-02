@@ -1,22 +1,34 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { HeroComponent } from '../elementos/hero/hero.component';
+import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
-import { EventosComponent } from "../elementos/eventos/eventos.component";
+import { faFacebook, faTwitter, faInstagram, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { HeroComponent } from '../elementos/hero/hero.component';
+import { EventosComponent } from '../elementos/eventos/eventos.component';
 
+interface Card {
+  title: string;
+  date: string;
+  image: string;
+}
 
 @Component({
   selector: 'app-inicio',
-  imports: [CommonModule, HeroComponent, FontAwesomeModule, EventosComponent],
+  standalone: true,
+  imports: [CommonModule, FontAwesomeModule, HeroComponent, EventosComponent],
   templateUrl: './inicio.component.html',
-  styleUrl: './inicio.component.css'
+  styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
-
+  // Font Awesome icons
   faArrowCircleRight = faArrowCircleRight;
+  faFacebook = faFacebook;
+  faTwitter = faTwitter;
+  faInstagram = faInstagram;
+  faLinkedin = faLinkedin;
+  faYoutube = faYoutube;
 
-  cards = [
+  cards: Card[] = [
     { 
       title: 'Card 1', 
       date: '2024-06-01', 
@@ -38,5 +50,4 @@ export class InicioComponent {
       image: 'assets/images/card4.jpg' 
     }
   ];
-
 }

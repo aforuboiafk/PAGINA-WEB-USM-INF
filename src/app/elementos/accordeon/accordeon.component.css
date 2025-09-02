@@ -14,15 +14,12 @@
     justify-content: space-between;
     align-items: center;
     transition: background-color 0.3s ease;
+    color: var(--azul-oscuro);
+
 }
 
 .acc-header:hover {
     background: var(--gris-5);
-}
-
-.acc-header h3 {
-    margin: 0;
-    color: var(--secondary);
 }
 
 .arrow {
@@ -30,9 +27,6 @@
     transition: transform 0.3s ease;
 }
 
-.arrow.expanded {
-    transform: rotate(180deg);
-}
 
 .acc-content {
     background: white;

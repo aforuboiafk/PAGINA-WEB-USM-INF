@@ -1,37 +1,65 @@
-<div class="">
-    <div class="col-12 barra-superior">
-        <div class="barra-superior-content">
-            <div class="link-div">
-                <a href="https://usm.cl" target="_blank">USM.cl</a>
-            </div>
-            <div class="social-media">
-                <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank">
-                    <img [src]="'/assets/icons/' + link.img" [alt]="link.name"/>
-                </a>
+    <div class="header-content">
+        <div class="w-100 barra-superior">
+            <div class="barra-superior-media d-flex justify-content-between align-items-center">
+                <div class="link-div">
+                    <a href="https://usm.cl" class="fw-bold" target="_blank">USM.cl</a>
+                </div>
+                <div class="social-media">
+                    <a *ngFor="let link of socialLinks" [href]="link.url" target="_blank">
+                        <img [src]="'/assets/icons/' + link.img" [alt]="link.name"/>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-12 barra-inferior">
-        <div class="barra-inferior-content">
-            <div class="logo-div">
-                <img src="/assets/images/marca-vertical/marca-vertical.png" alt="Logo USM Horizontal"/>
-                <hr>
-                <img src="/assets/images/ELINF/Logo-ELINF.png" alt="Logo ELINF"/>
-            </div>
-            <div class="menu-div">
+        <div class="col-12 barra-inferior">
+            <div class="barra-inferior-content">
+                <a href="/inicio">
+                    <div class="logo-div">
+                        <img src="/assets/images/marca-vertical/marca-vertical.png" alt="Logo USM Vertical"/>
+                        <hr class="logo-divider"/>
+                        <img src="/assets/images/ELINF/Logo-ELINF.png" alt="Logo ELINF"/>
+                    </div>
+                </a>
+                
+                <!-- Hamburger button for mobile -->
+                
+                
+                <!-- Desktop menu -->
+                <div class="menu-div">
+                <div class="d-inline d-lg-none">
+                    <button class="menu-btn" (click)="toggleMobileMenu()">
+                    <fa-icon [icon]="faBars" *ngIf="!isMobileMenuOpen"></fa-icon>
+                    <fa-icon [icon]="faX" *ngIf="isMobileMenuOpen"></fa-icon>
+                </button>
+                </div>
                 <div *ngFor="let item of menuItems" class="menu-item">
-                    <a [href]="item.url" class="menu-link">{{ item.name }}
-                        <fa-icon  [icon]="faCaretDown" *ngIf="item.submenu" class="caret-down"></fa-icon>
+                    <a [href]="item.url" class="menu-link">
+                        {{ item.name }}
+                        <fa-icon *ngIf="item.submenu" [icon]="faCaretDown" class="submenu-icon"></fa-icon>
                     </a>
                     <div *ngIf="item.submenu" class="submenu">
                         <div *ngFor="let subitem of item.submenu" class="submenu-item">
-                            <a [href]="subitem.url">{{ subitem.name }}
-
-                            </a>
+                            <a [href]="subitem.url">{{ subitem.name }}</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- Mobile menu -->
+    <div class="phone-menu-div" *ngIf="isMobileMenuOpen">
+        <div *ngFor="let item of menuItems" class="mobile-menu-item">
+            <a [href]="item.url" (click)="!item.submenu && closeMobileMenu()">
+                {{ item.name }}
+                <span *ngIf="item.submenu" class="submenu-toggle" (click)="$event.preventDefault(); toggleSubmenu(item)">
+                    <fa-icon *ngIf="item.submenu" [icon]="faCaretDown" class="submenu-icon"></fa-icon>
+                </span>
+            </a>
+            <div *ngIf="item.submenu && item.isOpen" class="mobile-submenu">
+                <div *ngFor="let subitem of item.submenu" class="mobile-submenu-item">
+                    <a [href]="subitem.url" (click)="closeMobileMenu()">{{ subitem.name }}</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

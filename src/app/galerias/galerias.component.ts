@@ -20,13 +20,13 @@ export class GaleriasComponent {
   images: GalleryImage[] = [
     {
       id: 1,
-      url: '/assets/images/ELINF/gallery/image1.jpg',
+      url: '/assets/images/fotografias/SVM/svm_1.jpg',
       title: 'Actividad 1',
       category: 'eventos'
     },
     {
       id: 2,
-      url: '/assets/images/ELINF/gallery/image2.jpg',
+      url: '/assets/images/fotografias/SVM/svm_1.jpg',
       title: 'Laboratorio',
       category: 'instalaciones'
     },

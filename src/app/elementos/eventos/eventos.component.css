@@ -1,10 +1,11 @@
 .eventos-container {
-    height: 620px;
-    padding: 40px 0;
+    min-height: 620px;
+    padding: 40px 15px;
     background-image: url('../../../assets/images/fondo-campus/fondo_vina.png');
     background-size: contain;
     background-position: center;
     position: relative;
+    margin-bottom: 40px;
 }
 
 .eventos-container::before {
@@ -28,9 +29,6 @@
 }
 
 .eventos-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -54,6 +52,9 @@
     background-position: center;
     position: relative;
     background-color: var(--azul-usm);
+}
+.asd{
+    display: flex;
 }
 
 .modality-badge {
@@ -129,7 +130,7 @@
 @media (max-width: 768px) {
     .eventos-container {
         height: auto;
-        padding: 30px 0;
+        padding: 30px 15px;
     }
     
     .eventos-grid {
