@@ -1,0 +1,28 @@
+.content{
+    padding: 0 10px;
+}
+
+.titulo {
+    background-color: var(--azul);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.titulo h2{
+    color: white;
+    text-align: center;
+    margin: 0
+}
+
+.titulo2 {
+    background-color: var(--amarillo);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}

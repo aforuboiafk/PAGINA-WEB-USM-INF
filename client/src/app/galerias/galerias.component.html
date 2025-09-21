@@ -1,0 +1,29 @@
+<app-hero
+    height="370px"
+     backgroundImage="images/fotografias/SVM/svm_5.jpg"
+    title="Galerías">
+</app-hero>
+
+<div class="content">
+    <div class="gallery-filters">
+        <button 
+            class="filter-btn"
+            *ngFor="let category of categories"
+            [class.active]="selectedCategory === category"
+            (click)="filterByCategory(category)">
+            {{ category | titlecase }}
+        </button>
+    </div>
+
+    <div class="gallery-grid">
+        <div *ngFor="let image of filteredImages" 
+             class="gallery-item"
+             [attr.data-category]="image.category">
+            <img [src]="image.url" [alt]="image.title">
+            <div class="gallery-item-overlay">
+                <h3 class="fw-bold text-white">{{ image.title }}</h3>
+                <span class="category">{{ image.category | titlecase }}</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="accordion">
+    <div class="acc-header" (click)="toggleAccordion()">
+        <strong class="fw-bold">{{ title }}</strong>
+        <div>
+            <span class="arrow" [class.expanded]="isExpanded">
+                <fa-icon [icon]="isExpanded ? faChevronUp : faChevronDown"></fa-icon>
+            </span>
+        </div>
+    </div>
+    <div class="acc-content" [@expandCollapse]="isExpanded ? 'expanded' : 'collapsed'">
+        <div class="acc-inner">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>
