@@ -1,0 +1,12 @@
+<div>
+    <div class="redes-sociales-divider"></div>
+    <h3 class="redes-sociales-title">Compartir en:</h3>
+    <div class="redes-sociales">
+        <div *ngFor="let link of linksList" class="redes-sociales-item" [style]="{'color': link.color}">
+            <fa-icon [icon]="link.icon" class="icon" ></fa-icon>
+            <strong class="icon-text">{{ link.name }}</strong>
+        </div>
+        
+    </div>
+    <div class="redes-sociales-divider"></div>  
+</div>

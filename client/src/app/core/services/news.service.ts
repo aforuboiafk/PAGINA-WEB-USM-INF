@@ -18,4 +18,7 @@ export class NewsService {
   getLatest(limit: number = 5): Observable<News[]> {
     return this.http.get<News[]>(`${this.base}/getLastNews/${limit}`);
   }
+  getNewsByUrl(url: string): Observable<News> {
+    return this.http.get<News>(`${this.base}/getByUrl/${url}`);
+  }
 }

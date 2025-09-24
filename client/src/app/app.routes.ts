@@ -12,11 +12,13 @@ import { AdmisionComponent } from './admision/admision.component';
 import { CarreraComponent } from './carrera/carrera.component';
 import { IbtCarreraComponent } from './ibt-carrera/ibt-carrera.component';
 import { TuCarreraComponent } from './tu-carrera/tu-carrera.component';
+import { NoticiaPlantillaComponent } from './elementos/noticia-plantilla/noticia-plantilla.component';
 
 export const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'quienes-somos', component: QuienesSomosComponent },
   { path: 'noticias', component: NoticiasComponent },
+  { path: 'noticias/:title', component: NoticiaPlantillaComponent },
   { path: 'mallas', component: MallasComponent },
   { path: 'practica', component: PracticaComponent },
   { path: 'titulacion', component: TitulacionComponent },
