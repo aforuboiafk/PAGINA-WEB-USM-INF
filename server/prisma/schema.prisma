@@ -15,6 +15,7 @@ datasource db {
 
 model News {
   id          Int      @id @default(autoincrement())
+  url         String   @unique
   title       String
   description String   @db.Text
   date        DateTime @default(now())
@@ -26,6 +27,7 @@ model News {
 
 model Event {
   id          Int      @id @default(autoincrement())
+  url         String   @unique
   title       String
   description String   @db.Text
   date        DateTime

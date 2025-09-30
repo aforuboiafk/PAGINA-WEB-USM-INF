@@ -62,4 +62,46 @@ router.get('/getLastNews/:n', async (req, res) => {
   res.json(items);
 });
 
+router.get('/getByUrl/:url', async (req, res) => {
+  const url = req.params.url;
+  const item = await prisma.news.findUnique({ where: { url } });
+  if (!item) return res.status(404).json({ message: 'Not found' });
+  res.json(item);
+});
+
+router.get('/adjacent/:id', async (req, res) => {
+  const id = Number(req.params.id);
+  if (!Number.isInteger(id) || id <= 0) return res.status(400).json({ message: 'Invalid id' });
+
+  try {
+    const current = await prisma.news.findUnique({
+      where: { id },
+      select: { id: true, date: true }
+    });
+    if (!current) return res.status(404).json({ message: 'Not found' });
+
+    const [previous, next] = await Promise.all([
+      prisma.news.findFirst({
+        where: {
+          date: { lt: current.date },
+          OR: [{ date: current.date, id: { lt: current.id } }]
+        },
+        orderBy: [{ date: 'desc' }, { id: 'desc' }]
+      }),
+      prisma.news.findFirst({
+        where: {
+          date: { gt: current.date },
+          OR: [{ date: current.date, id: { gt: current.id } }]
+        },
+        orderBy: [{ date: 'asc' }, { id: 'asc' }]
+      })
+    ]);
+
+    res.json([previous ?? null, next ?? null]);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+
 module.exports = router;

@@ -7,12 +7,13 @@ import { HeroComponent } from '../hero/hero.component';
 import { RedesSocialesNoticiasComponent } from "../redes-sociales-noticias/redes-sociales-noticias.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { NoticiasRecomendadasComponent } from "../noticias-recomendadas/noticias-recomendadas.component";
 
 
 @Component({
   selector: 'app-noticia-plantilla',
   standalone: true,
-  imports: [CommonModule, HeroComponent, RedesSocialesNoticiasComponent, FontAwesomeModule],
+  imports: [CommonModule, HeroComponent, RedesSocialesNoticiasComponent, FontAwesomeModule, NoticiasRecomendadasComponent],
   templateUrl: './noticia-plantilla.component.html',
   styleUrl: './noticia-plantilla.component.css'
 })
@@ -21,6 +22,7 @@ export class NoticiaPlantillaComponent implements OnInit {
   loading = false;
   error?: string;
   urlTitle?: string;
+  recommendedNews: News[] = [];
 
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
@@ -34,6 +36,7 @@ export class NoticiaPlantillaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNewsFromUrl();
+    this.getRecommendedNews();
   }
 
   private getNewsFromUrl(): void {
@@ -53,6 +56,8 @@ export class NoticiaPlantillaComponent implements OnInit {
     this.newsService.getNewsByUrl(this.urlTitle).subscribe({
       next: (data: News) => {
         this.new = data;
+        this.getRecommendedNews();
+
         this.loading = false;
       },
       error: (err: any) => {
@@ -62,6 +67,17 @@ export class NoticiaPlantillaComponent implements OnInit {
       }
     });
   }
+
+  getRecommendedNews() {
+    this.newsService.getAdjacent(this.new!.id).subscribe({
+      next: (data: any) => {
+        this.recommendedNews = data;
+        console.log(data);
+        
+      }
+    });
+  }
+
 
   goBack(): void {
     this.router.navigate(['/noticias']);

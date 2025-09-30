@@ -1,10 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-notice-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './notice-card.component.html',
   styleUrls: ['./notice-card.component.css']
 })
@@ -14,6 +15,8 @@ export class NoticeCardComponent {
   @Input() date: string = '';
   @Input() image: string = '';
   @Input() category: string = '';
+  @Input() link: string = '#';
+
 
   get formattedDate(): string {
     return new Date(this.date).toLocaleDateString('es-CL', {

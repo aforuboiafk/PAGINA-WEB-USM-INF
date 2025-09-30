@@ -10,6 +10,7 @@ export type ISODate = string;
 export interface News {
   id: number;
   title: string;
+  url: string; // slug generado en backend
   description: string;
   date: ISODate;
   image: string;

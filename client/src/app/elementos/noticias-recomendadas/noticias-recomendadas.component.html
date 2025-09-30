@@ -1,1 +1,32 @@
-<p>noticias-recomendadas works!</p>
+<div class="noticias-recomendadas">
+    <div class="header">
+        <h3 class="titulo">Noticias relacionadas</h3>
+    </div>
+
+  <div *ngIf="loading" class="estado">Cargando...</div>
+  <div *ngIf="error" class="estado error">{{ error }}</div>
+
+  <ul *ngIf="!loading && !error" class="lista row m-0 p-0">
+    <li *ngFor="let noticia of noticias" class="item p-0 col-12 col-md-6 col-lg-12 mb-3">
+        <img src="assets/{{ noticia.image }}" alt="" class="imagen-noticia">
+        <div class="noticia-content">
+            <h3 class="noticia-titulo">{{ noticia.title }}</h3>
+            <p class="noticia-descripcion">
+                {{ noticia.description }}
+            </p>
+            <div>
+                <button class="boton-noticia">
+                    <a [routerLink]="['/noticias', noticia.url]" class="leer-mas">Ver noticia</a>
+                </button>
+            </div>
+        </div>
+            <hr class="separador">
+            <div class="noticia-footer">
+                <span class="fecha">
+                    <strong>Fecha de publicación: </strong>{{ formatDate(noticia.date) }}
+                </span>
+
+            </div>
+    </li>
+  </ul>
+</div>

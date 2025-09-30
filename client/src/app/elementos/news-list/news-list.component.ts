@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { News } from '../../../assets/models/backendModels';
 import { NewsService } from '../../core/services/news.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-news-list',
@@ -15,7 +16,7 @@ export class NewsListComponent implements OnInit {
   loading = false;
   error?: string;
 
-  constructor(private newsService: NewsService) {}
+  constructor(private newsService: NewsService, private router: Router) {}
 
   ngOnInit(): void {
     this.getLatestNews();
@@ -39,4 +40,11 @@ export class NewsListComponent implements OnInit {
   formatDate(iso: string) {
     return new Date(iso).toLocaleDateString('es-CL', { day: 'numeric', month: 'long', year: 'numeric' });
   }
+
+    // Add Router to the constructor
+
+  goToNewsDetail(url: string) {
+    this.router.navigateByUrl(`/noticias/${url}`);
+  }
+
 }

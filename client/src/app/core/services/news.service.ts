@@ -21,4 +21,7 @@ export class NewsService {
   getNewsByUrl(url: string): Observable<News> {
     return this.http.get<News>(`${this.base}/getByUrl/${url}`);
   }
+  getAdjacent(id: number): Observable<(News | null)[]> {
+    return this.http.get<(News | null)[]>(`${this.base}/adjacent/${id}`);
+  }
 }

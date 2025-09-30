@@ -8,7 +8,7 @@
         <div class="col-12 col-lg-8">
             {{ new?.description }}
             <app-redes-sociales-noticias></app-redes-sociales-noticias>
-            <div class="row ">
+            <div class="row " *ngIf="recommendedNews.length > 0">
                 <div class="col d-flex align-items-center noticia-nav">
                     <div>
                         <fa-icon [icon]="faChevronLeft" class="chevron"></fa-icon>
@@ -17,15 +17,15 @@
                         <div>
                             <strong class="">Anterior</strong>
                         </div>
-                        <span>oda</span>
+                        <span>{{ recommendedNews[0]?.title }}</span>
                     </div>
                 </div>
-                <div class="col d-flex align-items-center justify-content-between noticia-nav">
+                <div class="col d-flex align-items-center justify-content-between noticia-nav" *ngIf="recommendedNews.length > 1">
                     <div class="flex-fill">
                         <div class="d-flex justify-content-end">
                             <strong >Siguiente</strong>
                         </div>
-                        <span>xao</span>
+                        <span>{{ recommendedNews[1]?.title }}</span>
                     </div>
                     <div>
                         <fa-icon [icon]="faChevronRight" class="chevron"></fa-icon>

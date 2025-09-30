@@ -1,16 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeroComponent } from '../elementos/hero/hero.component';
 import { NoticeCardComponent } from '../elementos/notice-card/notice-card.component';
-
-interface Notice {
-  id: number;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  category: string;
-}
+import { News } from '../../assets/models/backendModels';
+import { NewsService } from '../core/services/news.service';
 
 @Component({
   selector: 'app-noticias',
@@ -19,42 +12,38 @@ interface Notice {
   templateUrl: './noticias.component.html',
   styleUrls: ['./noticias.component.css']
 })
-export class NoticiasComponent {
-  notices: Notice[] = [
-    {
-      id: 1,
-      title: 'Estudiantes USM desarrollan proyecto innovador',
-      description: 'Estudiantes de Informática crean solución tecnológica para mejorar la calidad de vida...',
-      date: '2024-03-15',
-      image: '/assets/images/fondos-textura/fondo_textura_1.png',
-      category: 'Investigación'
-    },
-    {
-      id: 2,
-      title: 'Nuevo enfoque en la enseñanza de la programación',
-      description: 'La USM implementa metodologías innovadoras para la enseñanza de la programación...',
-      date: '2024-03-16',
-      image: '/assets/images/fondos-textura/fondo_textura_2.png',
-      category: 'Académico'
-    },
-    {
-      id: 3,
-      title: 'Impacto de la inteligencia artificial en la educación',
-      description: 'Un estudio sobre cómo la IA está transformando el aprendizaje en las aulas...',
-      date: '2024-03-17',
-      image: '/assets/images/fondos-textura/fondo_textura_3.png',
-      category: 'Investigación'
-    }
-    // Add more notices here
-  ];
+export class NoticiasComponent implements OnInit {
+  notices: News[] = [];
+  loading = false;
+  error?: string;
+  categories: string[] = ['Todos'];
+  selectedCategory = 'Todos';
 
-  categories: string[] = ['Todos', 'Investigación', 'Eventos', 'Académico'];
-  selectedCategory: string = 'Todos';
+  constructor(private newsService: NewsService) {}
 
-  get filteredNotices(): Notice[] {
-    if (this.selectedCategory === 'Todos') {
-      return this.notices;
-    }
+  ngOnInit(): void {
+    this.loadNews();
+  }
+
+  private loadNews(): void {
+    this.loading = true;
+    this.newsService.getAll().subscribe({
+      next: data => {
+        this.notices = data;
+        const unique = Array.from(new Set(data.map(n => n.category))).filter(Boolean as any);
+        this.categories = ['Todos', ...unique];
+        this.loading = false;
+      },
+      error: err => {
+        console.error(err);
+        this.error = 'No pudimos cargar las noticias.';
+        this.loading = false;
+      }
+    });
+  }
+
+  get filteredNotices(): News[] {
+    if (this.selectedCategory === 'Todos') return this.notices;
     return this.notices.filter(notice => notice.category === this.selectedCategory);
   }
 

@@ -1,11 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { News } from '../../../assets/models/backendModels';
+import { NewsService } from '../../core/services/news.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-noticias-recomendadas',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './noticias-recomendadas.component.html',
-  styleUrl: './noticias-recomendadas.component.css'
+  styleUrls: ['./noticias-recomendadas.component.css']
 })
-export class NoticiasRecomendadasComponent {
-  
+export class NoticiasRecomendadasComponent implements OnInit {
+  noticias: News[] = [];
+  loading = false;
+  error?: string;
+
+  constructor(private newsService: NewsService) {}
+
+  ngOnInit(): void {
+    this.fetchLatestNews();
+  }
+
+  private fetchLatestNews(): void {
+    this.loading = true;
+    this.newsService.getLatest(3).subscribe({
+      next: news => {
+        this.noticias = news;
+        this.loading = false;
+      },
+      error: err => {
+        console.error(err);
+        this.error = 'No pudimos cargar las noticias recomendadas.';
+        this.loading = false;
+      }
+    });
+  }
+
+  formatDate(iso: string): string {
+    return new Date(iso).toLocaleDateString('es-CL', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    });
+  }
 }

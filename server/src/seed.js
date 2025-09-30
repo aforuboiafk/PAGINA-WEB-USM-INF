@@ -16,8 +16,8 @@ async function main() {
   // Sample content
   await prisma.news.createMany({
     data: [
-      { title: 'Noticia 1', description: 'Detalle 1', image: '/img/n1.jpg', category: 'Eventos' },
-      { title: 'Noticia 2', description: 'Detalle 2', image: '/img/n2.jpg', category: 'Investigación' },
+      { title: 'Noticia 1', description: 'Detalle 1', url: 'noticia-1', image: '/img/n1.jpg', category: 'Eventos' },
+      { title: 'Noticia 2', description: 'Detalle 2', url: 'noticia-2', image: '/img/n2.jpg', category: 'Investigación' },
     ],
     skipDuplicates: true,
   });

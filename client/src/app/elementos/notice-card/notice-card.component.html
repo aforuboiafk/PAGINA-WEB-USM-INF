@@ -6,7 +6,7 @@
         <span class="notice-date">{{ formattedDate }}</span>
         <h3>{{ title }}</h3>
         <p>{{ description }}</p>
-        <a href="#" class="read-more">
+        <a [routerLink]="['/noticias', link]" class="read-more">
             Leer más
             <span class="arrow">→</span>
         </a>
