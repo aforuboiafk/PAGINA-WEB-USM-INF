@@ -6,7 +6,7 @@
 <div class="content">
     <div class="row">
         <div class="col-12 col-lg-8">
-            {{ new?.description }}
+            <div [innerHTML]="new?.description"></div>
             <app-redes-sociales-noticias></app-redes-sociales-noticias>
             <div class="row " *ngIf="recommendedNews.length > 0">
                 <div class="col d-flex align-items-center noticia-nav">

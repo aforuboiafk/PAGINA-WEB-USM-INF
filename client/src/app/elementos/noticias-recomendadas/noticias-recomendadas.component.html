@@ -12,11 +12,11 @@
         <div class="noticia-content">
             <h3 class="noticia-titulo">{{ noticia.title }}</h3>
             <p class="noticia-descripcion">
-                {{ noticia.description }}
+                {{ getDescriptionWithoutImages(noticia.description) }}
             </p>
             <div>
-                <button class="boton-noticia">
-                    <a [routerLink]="['/noticias', noticia.url]" class="leer-mas">Ver noticia</a>
+                <button class="boton-noticia" (click)="goToNews(noticia.url, noticia.title)">
+                  Ver noticia
                 </button>
             </div>
         </div>

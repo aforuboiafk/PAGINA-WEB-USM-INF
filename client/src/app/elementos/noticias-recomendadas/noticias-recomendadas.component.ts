@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { News } from '../../../assets/models/backendModels';
 import { NewsService } from '../../core/services/news.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticias-recomendadas',
@@ -16,7 +16,10 @@ export class NoticiasRecomendadasComponent implements OnInit {
   loading = false;
   error?: string;
 
-  constructor(private newsService: NewsService) {}
+  constructor(
+    private newsService: NewsService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchLatestNews();
@@ -44,4 +47,19 @@ export class NoticiasRecomendadasComponent implements OnInit {
       year: 'numeric'
     });
   }
+
+  goToNews(url?: string | null, title?: string) {
+    const slug = url;
+    this.router.navigate(['/noticias', slug]);
+  }
+
+  getDescriptionWithoutImages(description: string | null | undefined): string {
+    if (!description) return '';
+    const container = document.createElement('div');
+    container.innerHTML = description;
+    container.querySelectorAll('img').forEach(img => img.remove());
+    const text = container.textContent || container.innerText || '';
+    return text.trim();
+  }
+
 }

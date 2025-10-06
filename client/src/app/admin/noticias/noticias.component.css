@@ -1,0 +1,218 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.admin-noticias {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.admin-header h1 {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #3b424c;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 14px;
+  color: #808080;
+}
+
+.news-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+}
+
+/* Preview Container */
+.preview-container {
+  position: sticky;
+  top: 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  overflow: hidden;
+  max-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-header {
+  padding: 16px 20px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.preview-header h6 {
+  font-weight: 600;
+  color: #3b424c;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.preview-body {
+  padding: 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.preview-image-container {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #f5f5f5;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preview-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.preview-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3b424c;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.preview-content {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #3b424c;
+}
+
+.preview-content.ql-editor {
+  padding: 0;
+  border: none;
+}
+
+.preview-content p {
+  margin-bottom: 16px;
+}
+
+.preview-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+.preview-content h1,
+.preview-content h2,
+.preview-content h3 {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: #3b424c;
+}
+
+.preview-content blockquote {
+  border-left: 4px solid #e5b300;
+  padding-left: 16px;
+  margin: 20px 0;
+  color: #616974;
+  font-style: italic;
+}
+
+.preview-content ul,
+.preview-content ol {
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+
+.preview-content code {
+  background: #f5f5f5;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.preview-content pre {
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 16px 0;
+}
+
+/* Quill Editor Styling */
+::ng-deep .ql-toolbar {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6 !important;
+  border-radius: 8px 8px 0 0;
+}
+
+::ng-deep .ql-container {
+  border: 1px solid #dee2e6 !important;
+  border-radius: 0 0 8px 8px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+::ng-deep .ql-editor {
+  min-height: 400px;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+::ng-deep .ql-editor.ql-blank::before {
+  color: #6c757d;
+  font-style: normal;
+}
+
+@media (max-width: 991px) {
+  .preview-container {
+    position: static;
+    margin-top: 24px;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .preview-title {
+    font-size: 20px;
+  }
+
+  .preview-content {
+    font-size: 14px;
+  }
+}

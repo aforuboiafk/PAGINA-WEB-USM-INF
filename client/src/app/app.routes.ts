@@ -13,6 +13,8 @@ import { CarreraComponent } from './carrera/carrera.component';
 import { IbtCarreraComponent } from './ibt-carrera/ibt-carrera.component';
 import { TuCarreraComponent } from './tu-carrera/tu-carrera.component';
 import { NoticiaPlantillaComponent } from './elementos/noticia-plantilla/noticia-plantilla.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { NoticiasComponent as AdminNoticiasComponent } from './admin/noticias/noticias.component';
 
 export const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -33,6 +35,8 @@ export const routes: Routes = [
       { path: 'tecnico-universitario', component: TuCarreraComponent }
     ]
   },
+  { path: 'admin', component: DashboardComponent },
+  { path: 'admin/noticias', component: AdminNoticiasComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio' } // Wildcard route for 404
 ];

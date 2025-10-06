@@ -18,11 +18,11 @@ import { NoticiasRecomendadasComponent } from "../noticias-recomendadas/noticias
   styleUrl: './noticia-plantilla.component.css'
 })
 export class NoticiaPlantillaComponent implements OnInit {
-  new?: News; // Changed from 'new' to 'news' (better naming)
+  new?: News;
   loading = false;
   error?: string;
   urlTitle?: string;
-  recommendedNews: News[] = [];
+  recommendedNews: (News | null)[] = [];
 
   faChevronLeft = faChevronLeft;
   faChevronRight = faChevronRight;
@@ -36,7 +36,6 @@ export class NoticiaPlantillaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getNewsFromUrl();
-    this.getRecommendedNews();
   }
 
   private getNewsFromUrl(): void {
@@ -51,14 +50,13 @@ export class NoticiaPlantillaComponent implements OnInit {
 
   private getNewsByTitle(): void {
     if (!this.urlTitle) return;
-    
+
     this.loading = true;
     this.newsService.getNewsByUrl(this.urlTitle).subscribe({
       next: (data: News) => {
         this.new = data;
-        this.getRecommendedNews();
-
         this.loading = false;
+        this.loadAdjacentNews();
       },
       error: (err: any) => {
         console.error(err);
@@ -68,12 +66,19 @@ export class NoticiaPlantillaComponent implements OnInit {
     });
   }
 
-  getRecommendedNews() {
-    this.newsService.getAdjacent(this.new!.id).subscribe({
-      next: (data: any) => {
-        this.recommendedNews = data;
-        console.log(data);
-        
+  private loadAdjacentNews(): void {
+    if (!this.new?.id) {
+      this.recommendedNews = [];
+      return;
+    }
+
+    this.newsService.getAdjacent(this.new.id).subscribe({
+      next: (items: (News | null)[]) => {
+        this.recommendedNews = items;
+      },
+      error: (err: any) => {
+        console.error(err);
+        this.recommendedNews = [];
       }
     });
   }

@@ -1,9 +1,10 @@
+@import 'quill/dist/quill.core.css';
+@import 'quill/dist/quill.snow.css';
+
 @font-face {
   font-family: 'Montserrat';
   src: url('../src/assets/fonts/Montserrat-Regular.ttf') format('truetype');
 }
-
-
 
 
 /* ===============================
