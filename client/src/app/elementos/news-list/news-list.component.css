@@ -24,6 +24,7 @@
     background-image: url('../../../assets/images/fondos-textura/fondo_textura_1.png');
     background-size: cover;
     background-position: center;
+    position: relative; /* needed for overlay pseudo-element */
 }
  
 .card h4{
@@ -32,9 +33,24 @@
     margin-bottom: 25px;
     border-left: 5px solid var(--amarillo);
     padding-left: 9px;
+    position: relative;
+    z-index: 2; /* keep text above overlay */
 }
 .card span{
     color: white;
+    position: relative;
+    z-index: 2; /* keep text above overlay */
+}
+
+/* Dark overlay on top of background images to make them appear darker */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    background: rgba(0,0,0,0.35); /* slightly darker */
+    pointer-events: none; /* allow clicks to pass through */
+    border-radius: inherit; /* match card rounding */
+    z-index: 1;
 }
 
 .card:hover {

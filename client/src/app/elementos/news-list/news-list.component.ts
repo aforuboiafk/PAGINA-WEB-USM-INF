@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { News } from '../../../assets/models/backendModels';
 import { NewsService } from '../../core/services/news.service';
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-news-list',
@@ -16,7 +17,7 @@ export class NewsListComponent implements OnInit {
   loading = false;
   error?: string;
 
-  constructor(private newsService: NewsService, private router: Router) {}
+  constructor(private newsService: NewsService, private router: Router, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.getLatestNews();
@@ -45,6 +46,24 @@ export class NewsListComponent implements OnInit {
 
   goToNewsDetail(url: string) {
     this.router.navigateByUrl(`/noticias/${url}`);
+  }
+
+  /**
+   * Convierte una cadena `image` (data URL o base64 crudo) en un SafeStyle
+   * usable en `[style.backgroundImage]`. Devuelve null si no hay imagen.
+   */
+  getBackgroundBase64(image?: string): SafeStyle | null {
+    if (!image) return null;
+
+    let dataUrl = image.trim();
+    if (!dataUrl) return null;
+
+    if (!dataUrl.startsWith('data:')) {
+      dataUrl = `data:image/png;base64,${dataUrl}`;
+    }
+
+    const cssValue = `url('${dataUrl}')`;
+    return this.sanitizer.bypassSecurityTrustStyle(cssValue);
   }
 
 }

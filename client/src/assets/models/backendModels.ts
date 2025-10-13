@@ -10,6 +10,7 @@ export type ISODate = string;
 export interface News {
   id: number;
   title: string;
+  resumen?: string;
   url: string; // slug generado en backend
   description: string;
   date: ISODate;
@@ -22,6 +23,7 @@ export interface News {
 export interface Event {
   id: number;
   title: string;
+  resumen?: string;
   description: string;
   date: ISODate;
   hour: string;
@@ -83,6 +85,7 @@ export interface AuthResponse {
 // News
 export interface CreateNewsRequest {
   title: string;
+  resumen?: string;
   description: string;
   date?: ISODate; // opcional si el backend lo setea
   image: string;
@@ -93,6 +96,7 @@ export type UpdateNewsRequest = Partial<CreateNewsRequest>;
 // Events
 export interface CreateEventRequest {
   title: string;
+  resumen?: string;
   description: string;
   date: ISODate;
   hour: string;

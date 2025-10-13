@@ -16,8 +16,8 @@ async function main() {
   // Sample content
   await prisma.news.createMany({
     data: [
-      { title: 'Noticia 1', description: 'Detalle 1', url: 'noticia-1', image: '/img/n1.jpg', category: 'Eventos' },
-      { title: 'Noticia 2', description: 'Detalle 2', url: 'noticia-2', image: '/img/n2.jpg', category: 'Investigación' },
+      { title: 'Noticia 1', description: 'Detalle 1', resumen: 'Resumen breve de Noticia 1', url: 'noticia-1', image: '/img/n1.jpg', category: 'Eventos' },
+      { title: 'Noticia 2', description: 'Detalle 2', resumen: 'Resumen breve de Noticia 2', url: 'noticia-2', image: '/img/n2.jpg', category: 'Investigación' },
     ],
     skipDuplicates: true,
   });
@@ -25,8 +25,8 @@ async function main() {
   const now = new Date();
   await prisma.event.createMany({
     data: [
-      { title: 'Evento A', description: 'Desc A', date: now, hour: '10:00', modality: 'PRESENCIAL', image: '/img/e1.jpg' },
-      { title: 'Evento B', description: 'Desc B', date: new Date(now.getTime() + 86400000), hour: '16:00', modality: 'VIRTUAL', image: '/img/e2.jpg' },
+      { title: 'Evento A', description: 'Desc A', resumen: 'Resumen corto Evento A', date: now, hour: '10:00', modality: 'PRESENCIAL', image: '/img/e1.jpg' },
+      { title: 'Evento B', description: 'Desc B', resumen: 'Resumen corto Evento B', date: new Date(now.getTime() + 86400000), hour: '16:00', modality: 'VIRTUAL', image: '/img/e2.jpg' },
     ],
     skipDuplicates: true,
   });

@@ -15,9 +15,12 @@ const settingsRoutes = require('./routes/settings');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// Aumentar el límite de tamaño del body
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
 // Core middleware
 app.use(cors());
-app.use(express.json({ limit: '1mb' }));
 app.use(morgan('dev'));
 
 // Health

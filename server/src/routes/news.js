@@ -19,7 +19,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // CREATE
-router.post('/', requireAuth, requireAdmin, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const created = await prisma.news.create({ data: req.body });
     res.status(201).json(created);
@@ -29,7 +29,7 @@ router.post('/', requireAuth, requireAdmin, async (req, res) => {
 });
 
 // UPDATE
-router.put('/:id', requireAuth, requireAdmin, async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id);
     const updated = await prisma.news.update({ where: { id }, data: req.body });

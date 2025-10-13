@@ -27,6 +27,7 @@ export class NoticiasComponent implements OnInit {
   
   form: CreateNewsRequest = {
     title: '',
+    resumen: '',
     description: '',
     image: '',
     category: '',
@@ -84,6 +85,13 @@ export class NoticiasComponent implements OnInit {
 
   constructor(private newsService: NewsService) {}
 
+  // Controla si se muestra la vista previa junto al formulario
+  showPreview = true;
+
+  togglePreview(): void {
+    this.showPreview = !this.showPreview;
+  }
+
   ngOnInit(): void {
     this.loadNews();
   }
@@ -113,12 +121,20 @@ export class NoticiasComponent implements OnInit {
   openCreateModal(): void {
     this.isEditing = false;
     this.currentNews = undefined;
+    
+    // Formato datetime-local: YYYY-MM-DDTHH:mm
+    const now = new Date();
+    const formattedDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+      .toISOString()
+      .slice(0, 16);
+    
     this.form = {
       title: '',
+      resumen: '',
       description: '',
       image: '',
       category: '',
-      date: new Date().toISOString().split('T')[0]
+      date: formattedDate
     };
     this.error = undefined;
     this.modal?.show();
@@ -127,12 +143,20 @@ export class NoticiasComponent implements OnInit {
   openEditModal(news: News): void {
     this.isEditing = true;
     this.currentNews = news;
+    
+    // Convertir la fecha ISO a formato datetime-local
+    const date = new Date(news.date);
+    const formattedDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000)
+      .toISOString()
+      .slice(0, 16);
+    
     this.form = {
       title: news.title,
+      resumen: news.resumen ?? '',
       description: news.description,
       image: news.image,
       category: news.category,
-      date: news.date.split('T')[0]
+      date: formattedDate
     };
     this.error = undefined;
     this.modal?.show();
@@ -144,14 +168,17 @@ export class NoticiasComponent implements OnInit {
   }
 
   saveNews(): void {
-    if (!this.form.title || !this.form.description) {
-      this.error = 'Título y descripción son obligatorios';
+    const { title, description, image, date } = this.form;
+
+    if (!title || !description || !image || !date) {
+      this.error = 'Título, descripción, imagen y fecha son obligatorios';
       return;
     }
 
-    // Limpia cualquier imagen base64 del contenido
+    // Convierte la fecha datetime-local a ISO-8601 completo
     const formData = {
       ...this.form,
+      date: new Date(date).toISOString()
     };
 
     console.log('Enviando datos:', formData);
@@ -168,7 +195,7 @@ export class NoticiasComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al actualizar:', err);
-          this.error = 'Error al actualizar noticia';
+          this.error = err.error?.message || 'Error al actualizar noticia';
           this.loading = false;
         }
       });
@@ -181,7 +208,7 @@ export class NoticiasComponent implements OnInit {
         },
         error: (err) => {
           console.error('Error al crear:', err);
-          this.error = 'Error al crear noticia';
+          this.error = err.error?.message || 'Error al crear noticia';
           this.loading = false;
         }
       });

@@ -1,11 +1,11 @@
 <div class="notice-card">
-    <div class="notice-image" [style.backgroundImage]="'url(' + image + ')'">
+    <div class="notice-image" [style.backgroundImage]="getBackgroundBase64()">
         <span class="notice-category text-white">{{ category }}</span>
     </div>
     <div class="notice-content">
         <span class="notice-date">{{ formattedDate }}</span>
         <h3>{{ title }}</h3>
-        <p>{{ description }}</p>
+        <p>{{ resumen }}</p>
         <a [routerLink]="['/noticias', link]" class="read-more">
             Leer más
             <span class="arrow">→</span>

@@ -7,7 +7,7 @@ import { RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-noticias-recomendadas',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule],
   templateUrl: './noticias-recomendadas.component.html',
   styleUrls: ['./noticias-recomendadas.component.css']
 })

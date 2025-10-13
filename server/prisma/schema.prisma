@@ -15,12 +15,13 @@ datasource db {
 
 model News {
   id          Int      @id @default(autoincrement())
-  url         String   @unique
   title       String
   description String   @db.Text
-  date        DateTime @default(now())
-  image       String
+  resumen     String?  @db.Text
+  image       String   @db.Text
   category    String
+  date        DateTime
+  url         String   @unique @default("")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -30,18 +31,19 @@ model Event {
   url         String   @unique
   title       String
   description String   @db.Text
+  resumen     String?  @db.Text
   date        DateTime
   hour        String
   modality    Modality
-  image       String
+  image       String   @db.Text
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
 
 model Gallery {
   id        Int        @id @default(autoincrement())
-  title     String
-  url       String
+  title     String     @db.Text
+  url       String     @unique
   category  GalleryCategory
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
@@ -61,7 +63,7 @@ model Post {
   id        Int      @id @default(autoincrement())
   title     String
   content   String   @db.Text
-  image     String?
+  image     String?  @db.Text
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

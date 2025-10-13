@@ -12,7 +12,7 @@
         <div class="noticia-content">
             <h3 class="noticia-titulo">{{ noticia.title }}</h3>
             <p class="noticia-descripcion">
-                {{ getDescriptionWithoutImages(noticia.description) }}
+                {{ noticia.resumen }}
             </p>
             <div>
                 <button class="boton-noticia" (click)="goToNews(noticia.url, noticia.title)">
