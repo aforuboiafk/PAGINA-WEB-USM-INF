@@ -15,12 +15,17 @@ import { TuCarreraComponent } from './tu-carrera/tu-carrera.component';
 import { NoticiaPlantillaComponent } from './elementos/noticia-plantilla/noticia-plantilla.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { NoticiasComponent as AdminNoticiasComponent } from './admin/noticias/noticias.component';
+import { EventosComponent as AdminEventComponent } from './admin/eventos/eventos.component';
+import { EventoPlantillaComponent } from './elementos/evento-plantilla/evento-plantilla.component';
+import { EventosComponent } from './eventos/eventos.component';
 
 export const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'quienes-somos', component: QuienesSomosComponent },
   { path: 'noticias', component: NoticiasComponent },
   { path: 'noticias/:title', component: NoticiaPlantillaComponent },
+  { path: 'eventos', component: EventosComponent },
+  { path: 'eventos/:title', component: EventoPlantillaComponent },
   { path: 'mallas', component: MallasComponent },
   { path: 'practica', component: PracticaComponent },
   { path: 'titulacion', component: TitulacionComponent },
@@ -37,6 +42,7 @@ export const routes: Routes = [
   },
   { path: 'admin', component: DashboardComponent },
   { path: 'admin/noticias', component: AdminNoticiasComponent },
+  { path: 'admin/eventos', component: AdminEventComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio' } // Wildcard route for 404
 ];

@@ -1,0 +1,15 @@
+:host { display:block; min-height:100vh; background:#f5f7fa; font-family:'Montserrat',sans-serif; }
+.admin-eventos { max-width:1400px; margin:0 auto; padding:40px 24px; }
+.admin-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; padding:24px; background:white; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+.admin-header h1 { margin:0 0 4px; font-size:28px; font-weight:700; color:#3b424c; }
+.subtitle { margin:0; font-size:14px; color:#808080; }
+.card { border:none; border-radius:12px; }
+.preview-container { position:sticky; top:20px; background:white; border:1px solid #e0e0e0; border-radius:12px; overflow:hidden; max-height:calc(100vh - 200px); display:flex; flex-direction:column; }
+.preview-header { padding:16px 20px; background:#f8f9fa; border-bottom:1px solid #e0e0e0; }
+.preview-header h6 { font-weight:600; color:#3b424c; font-size:14px; text-transform:uppercase; letter-spacing:0.5px; }
+.preview-body { padding:24px; overflow-y:auto; flex:1; }
+.form-column { max-height:calc(100vh - 200px); overflow-y:auto; padding-right:12px; }
+.preview-content { font-size:15px; line-height:1.8; color:#3b424c; }
+.preview-content.ql-editor { padding:0; border:none; }
+.preview-content p { margin-bottom:16px; }
+@media (max-width:991px) { .preview-container { position:static; margin-top:24px; max-height:500px; } }

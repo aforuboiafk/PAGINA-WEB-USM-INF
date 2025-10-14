@@ -5,11 +5,13 @@ import {faClock} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { Event } from '../../../assets/models/backendModels';
 import { EventsService } from '../../core/services/events.service';
+import { Router, RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-eventos',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, RouterLink],
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })
@@ -20,7 +22,7 @@ export class EventosComponent implements OnInit {
   loading = false;
   error?: string;
 
-  constructor(private eventsService: EventsService) {}
+  constructor(private eventsService: EventsService, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchEvents();
@@ -41,4 +43,9 @@ export class EventosComponent implements OnInit {
       year: 'numeric'
     });
   }
+
+  redirectToEventDetail(event: Event): void {
+    this.router.navigate(['/evento', event.id]);
+  }
+
 }

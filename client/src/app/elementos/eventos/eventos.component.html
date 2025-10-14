@@ -20,9 +20,9 @@
                             <span>{{ event.hour }}</span>
                         </div>
                     </div>
-                    <button class="info-button">
+                    <a class="info-button" [routerLink]="['/eventos', event.url]">
                         Más Información
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>

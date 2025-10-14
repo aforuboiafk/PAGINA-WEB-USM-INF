@@ -34,4 +34,8 @@ export class EventsService {
     return this.http.get<Event[]>(`${this.base}/getLastNews/${limit}`);
   }
 
+  getEventByUrl(url: string): Observable<Event> {
+    return this.http.get<Event>(`${this.base}/getEventByUrl/${url}`);
+  } 
+
 }

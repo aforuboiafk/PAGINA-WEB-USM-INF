@@ -1,0 +1,80 @@
+<div *ngIf="event">
+    <app-hero
+        height="450px"
+        [backgroundImage]="event.image"
+        [title]="event.title">
+    </app-hero>
+
+    <div class="container my-4 ">
+        <div class="row">
+            <div class="col-12 col-lg-9">
+                <section class="evento-description mb-4" [innerHTML]="event.description"></section>
+            </div>
+            
+            <aside class="col-12 col-lg-3 informacion-evento">
+                <div class="info-details">
+                    <h5 class="mb-3">
+                        <strong>Detalles del Evento</strong>
+                    </h5>
+                </div>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faCalendar" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Fecha:</strong>
+                    {{ event.date | date: 'shortDate' }}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faClock" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Hora Inicio:</strong> {{event.hour}}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faClock" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Hora Fin:</strong> {{event.endHour ? event.endHour : '--'}}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faDoorOpen" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Público:</strong> {{event.audience ? event.audience : '--'}}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faPersonBooth" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Modalidad:</strong> {{event.modality}}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faMapPin" class="me-2 info-icon"></fa-icon>
+                    </div>  
+                    <strong>Ubicación:</strong> {{event.location ? event.location : '--'}}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faBook" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Temática:</strong> {{event.topic ? event.topic : '--'}}
+                </div>
+                <hr>
+                <div class="d-flex align-items-center detail-div">
+                    <div class="icon-div">
+                        <fa-icon [icon]="faMailBulk" class="me-2 info-icon"></fa-icon>
+                    </div>
+                    <strong>Consultas a:</strong> {{event.contact ? event.contact : '--'}}
+                </div>
+                <hr>
+            </aside>
+        </div>
+    </div>
+</div>

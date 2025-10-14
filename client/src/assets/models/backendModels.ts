@@ -23,10 +23,16 @@ export interface News {
 export interface Event {
   id: number;
   title: string;
-  resumen?: string;
+  url: string; // slug generado en backend
+  resumen: string;
   description: string;
   date: ISODate;
   hour: string;
+  endHour: string;
+  audience: string;
+  location: string; 
+  topic: string;
+  contact: string;
   modality: Modality;
   image: string;
   createdAt: ISODate;
@@ -100,6 +106,11 @@ export interface CreateEventRequest {
   description: string;
   date: ISODate;
   hour: string;
+  endHour?: string;
+  audience?: string;
+  location?: string;
+  topic?: string;
+  contact?: string;
   modality: Modality;
   image: string;
 }

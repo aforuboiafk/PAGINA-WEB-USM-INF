@@ -29,9 +29,9 @@ export class HeroComponent {
 
     let dataUrl = this.backgroundImage.trim();
 
-    if (!dataUrl.startsWith('data:')) {
-      dataUrl = `data:image/png;base64,${dataUrl}`;
-    }
+    // if (!dataUrl.startsWith('data:')) {
+    //   dataUrl = `data:image/png;base64,${dataUrl}`;
+    // }
     const cssValue = `url('${dataUrl}')`;
     return this.sanitizer.bypassSecurityTrustStyle(cssValue);
   }
