@@ -1,21 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { Gallery, CreateGalleryRequest, UpdateGalleryRequest, GalleryCategory } from '../../../assets/models/backendModels';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { Gallery, CreateGalleryRequest, UpdateGalleryRequest } from '../../../assets/models/backendModels';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class GalleryService {
-  private base = `${environment.apiBaseUrl}/api/gallery`;
+  private apiUrl = `${environment.apiBaseUrl}/api/gallery`;
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Gallery[]> { return this.http.get<Gallery[]>(this.base); }
-  getByCategory(category: GalleryCategory): Observable<Gallery[]> {
-    return this.http.get<Gallery[]>(`${this.base}/category/${category}`);
+  getGalleries(): Observable<Gallery[]> {
+    return this.http.get<Gallery[]>(this.apiUrl);
   }
-  getById(id: number): Observable<Gallery> { return this.http.get<Gallery>(`${this.base}/${id}`); }
-  create(body: CreateGalleryRequest): Observable<Gallery> { return this.http.post<Gallery>(this.base, body); }
-  update(id: number, body: UpdateGalleryRequest): Observable<Gallery> { return this.http.put<Gallery>(`${this.base}/${id}`, body); }
-  delete(id: number) { return this.http.delete<{ ok: boolean }>(`${this.base}/${id}`); }
+
+  getGalleryById(id: number): Observable<Gallery> {
+    return this.http.get<Gallery>(`${this.apiUrl}/${id}`);
+  }
+
+  createGallery(payload: CreateGalleryRequest): Observable<Gallery> {
+    return this.http.post<Gallery>(this.apiUrl, payload);
+  }
+
+  updateGallery(id: number, payload: UpdateGalleryRequest): Observable<Gallery> {
+    return this.http.put<Gallery>(`${this.apiUrl}/${id}`, payload);
+  }
+
+  deleteGallery(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

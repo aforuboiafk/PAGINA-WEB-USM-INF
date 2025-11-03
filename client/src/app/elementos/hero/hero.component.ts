@@ -20,18 +20,13 @@ export class HeroComponent {
   /**
    * Devuelve un SafeStyle con la propiedad CSS background-image
    * El input `backgroundImage` puede ser:
-   * - una URL completa tipo `data:image/png;base64,...`
-   * - solo el texto base64 (en cuyo caso se asume `image/png` por defecto)
-   * Si no hay imagen, devuelve null para no aplicar background-image.
+   * - una URL data completa tipo `data:image/png;base64,...` (ya procesada)
+   * - una ruta normal (images/foto.jpg, ./assets/img.png, etc.)
    */
   getBackgroundBase64(): SafeStyle | null {
     if (!this.backgroundImage) return null;
 
-    let dataUrl = this.backgroundImage.trim();
-
-    // if (!dataUrl.startsWith('data:')) {
-    //   dataUrl = `data:image/png;base64,${dataUrl}`;
-    // }
+    const dataUrl = this.backgroundImage.trim();
     const cssValue = `url('${dataUrl}')`;
     return this.sanitizer.bypassSecurityTrustStyle(cssValue);
   }

@@ -37,15 +37,18 @@ export interface Event {
   image: string;
   createdAt: ISODate;
   updatedAt: ISODate;
+  urlForm?: string;
 }
 
 export interface Gallery {
   id: number;
   title: string;
+  description: string;
+  images: string; // JSON string array of base64 images
   url: string;
-  category: GalleryCategory;
-  createdAt: ISODate;
-  updatedAt: ISODate;
+  category: 'EVENTOS' | 'INSTALACIONES' | 'ESTUDIANTES';
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface UserPublic {
@@ -113,14 +116,16 @@ export interface CreateEventRequest {
   contact?: string;
   modality: Modality;
   image: string;
+  urlForm?: string;
 }
 export type UpdateEventRequest = Partial<CreateEventRequest>;
 
 // Gallery
 export interface CreateGalleryRequest {
   title: string;
-  url: string;
-  category: GalleryCategory;
+  images: string;
+  description?: string;
+  category: 'EVENTOS' | 'INSTALACIONES' | 'ESTUDIANTES';
 }
 export type UpdateGalleryRequest = Partial<CreateGalleryRequest>;
 

@@ -17,61 +17,90 @@
                         <strong>Detalles del Evento</strong>
                     </h5>
                 </div>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div" *ngIf="event.urlForm">
+                    <div class="detail-text">
+                        <button class="inscription-btn" (click)="goToInscription()">Ir a Inscripción</button>
+                    </div>
+                </div>
+
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faCalendar" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Fecha:</strong>
-                    {{ event.date | date: 'shortDate' }}
+                    <div class="detail-text">
+                        <strong>Fecha:</strong>
+                        <span>{{ event.date | date: 'shortDate' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faClock" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Hora Inicio:</strong> {{event.hour}}
+                    <div class="detail-text">
+                        <strong>Hora Inicio:</strong>
+                        <span>{{ event.hour || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faClock" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Hora Fin:</strong> {{event.endHour ? event.endHour : '--'}}
+                    <div class="detail-text">
+                        <strong>Hora Fin:</strong>
+                        <span>{{ event.endHour || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faDoorOpen" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Público:</strong> {{event.audience ? event.audience : '--'}}
+                    <div class="detail-text">
+                        <strong>Público:</strong>
+                        <span>{{ event.audience || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faPersonBooth" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Modalidad:</strong> {{event.modality}}
+                    <div class="detail-text">
+                        <strong>Modalidad:</strong>
+                        <span>{{ event.modality || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faMapPin" class="me-2 info-icon"></fa-icon>
-                    </div>  
-                    <strong>Ubicación:</strong> {{event.location ? event.location : '--'}}
+                    </div>
+                    <div class="detail-text">
+                        <strong>Ubicación:</strong>
+                        <span>{{ event.location || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faBook" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Temática:</strong> {{event.topic ? event.topic : '--'}}
+                    <div class="detail-text">
+                        <strong>Temática:</strong>
+                        <span>{{ event.topic || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
-                <div class="d-flex align-items-center detail-div">
+                <div class="d-flex detail-div">
                     <div class="icon-div">
                         <fa-icon [icon]="faMailBulk" class="me-2 info-icon"></fa-icon>
                     </div>
-                    <strong>Consultas a:</strong> {{event.contact ? event.contact : '--'}}
+                    <div class="detail-text">
+                        <strong>Consultas a:</strong>
+                        <span>{{ event.contact || '--' }}</span>
+                    </div>
                 </div>
                 <hr>
             </aside>

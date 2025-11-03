@@ -48,8 +48,7 @@
     border-radius: 8px;
     overflow: hidden;
     aspect-ratio: 4/3;
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-                url('/assets/images/fondos-textura/fondo_default.jpg');
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1));
     background-size: cover;
     background-position: center;
 }

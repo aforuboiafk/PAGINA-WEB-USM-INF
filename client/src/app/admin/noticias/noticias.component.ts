@@ -5,13 +5,14 @@ import { QuillModule } from 'ngx-quill';
 import { NewsService } from '../../core/services/news.service';
 import { News, CreateNewsRequest, UpdateNewsRequest } from '../../../assets/models/backendModels';
 import { HeroComponent } from "../../elementos/hero/hero.component";
+import { RouterLink } from '@angular/router';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-admin-noticias',
   standalone: true,
-  imports: [CommonModule, FormsModule, QuillModule, HeroComponent],
+  imports: [CommonModule, FormsModule, QuillModule, HeroComponent, RouterLink],
   templateUrl: './noticias.component.html',
   styleUrls: ['./noticias.component.css']
 })

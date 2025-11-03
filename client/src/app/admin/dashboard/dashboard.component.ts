@@ -30,23 +30,9 @@ export class DashboardComponent {
       title: 'Galería',
       icon: '🖼️',
       description: 'Sube y organiza imágenes oficiales.',
-      route: '/admin/galeria',
+      route: '/admin/galerias',
       color: '#00815C'
     },
-    {
-      title: 'Configuración',
-      icon: '⚙️',
-      description: 'Ajusta textos, enlaces y parámetros.',
-      route: '/admin/configuracion',
-      color: '#3b424c'
-    },
-    {
-      title: 'Usuarios',
-      icon: '👥',
-      description: 'Gestiona roles y accesos del equipo.',
-      route: '/admin/usuarios',
-      color: '#808080'
-    }
   ];
 
   constructor(

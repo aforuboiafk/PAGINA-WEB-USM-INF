@@ -1,4 +1,3 @@
-
 .info-details{
     border-left: 5px solid black;
     padding-left: 15px;
@@ -32,6 +31,37 @@
 
 .detail-div{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 20px 0;
+  gap: 0.75rem;
+  word-break: break-word;
+}
+
+.detail-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 100%;
+}
+
+.detail-text span {
+  overflow-wrap: anywhere;
+}
+
+.detail-text strong {
+  display: inline-block;
+}
+
+.inscription-btn{
+    background-color: var(--amarillo);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+.inscription-btn:hover{
+    background-color: #b59207; /* Darker shade of yellow on hover */
 }

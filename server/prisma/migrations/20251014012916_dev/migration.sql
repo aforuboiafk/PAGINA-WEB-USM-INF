@@ -10,12 +10,13 @@ CREATE TYPE "public"."Role" AS ENUM ('USER', 'ADMIN');
 -- CreateTable
 CREATE TABLE "public"."News" (
     "id" SERIAL NOT NULL,
-    "url" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "resumen" TEXT,
     "image" TEXT NOT NULL,
     "category" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL,
+    "url" TEXT NOT NULL DEFAULT '',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -28,8 +29,14 @@ CREATE TABLE "public"."Event" (
     "url" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "resumen" TEXT NOT NULL,
     "date" TIMESTAMP(3) NOT NULL,
     "hour" TEXT NOT NULL,
+    "endHour" TEXT NOT NULL,
+    "audience" TEXT NOT NULL,
+    "location" TEXT NOT NULL,
+    "topic" TEXT NOT NULL,
+    "contact" TEXT NOT NULL,
     "modality" "public"."Modality" NOT NULL,
     "image" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -88,6 +95,9 @@ CREATE UNIQUE INDEX "News_url_key" ON "public"."News"("url");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Event_url_key" ON "public"."Event"("url");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Gallery_url_key" ON "public"."Gallery"("url");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "public"."User"("email");

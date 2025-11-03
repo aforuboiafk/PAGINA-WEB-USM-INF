@@ -18,9 +18,12 @@ border-color: #E5BF00;
   margin: 0 ;
 }
 
-.imagen-noticia{
-  height: 251px;
+.imagen-noticia {
   width: 100%;
+  height: 251px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
 }
 .noticia-titulo {
   margin: 15px 0px;

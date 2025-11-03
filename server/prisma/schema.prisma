@@ -29,11 +29,17 @@ model News {
 model Event {
   id          Int      @id @default(autoincrement())
   url         String   @unique
+  urlForm     String   @default("")
   title       String
   description String   @db.Text
-  resumen     String?  @db.Text
+  resumen     String  @db.Text
   date        DateTime
   hour        String
+  endHour     String  // Hora de término, opcional (ej: "11:00")
+  audience    String  // Público objetivo (ej: "Abierto")
+  location    String  // Ubicación detallada (ej: "Otro")
+  topic       String  // Temática del evento (ej: "Vinculación con el Medio")
+  contact     String  // Contacto para consultas (ej: "comunicaciones@inf.utfsm.cl")
   modality    Modality
   image       String   @db.Text
   createdAt   DateTime @default(now())
@@ -43,6 +49,8 @@ model Event {
 model Gallery {
   id        Int        @id @default(autoincrement())
   title     String     @db.Text
+  description String   @db.Text
+  images    String     @db.Text
   url       String     @unique
   category  GalleryCategory
   createdAt DateTime   @default(now())

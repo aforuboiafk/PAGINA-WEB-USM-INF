@@ -57,4 +57,9 @@ export class EventoPlantillaComponent implements OnInit {
       }
     });
   }
+  goToInscription(): void {
+    if (this.event && this.event.urlForm) {
+      window.open(this.event.urlForm, '_blank');
+    }
+  }
 }

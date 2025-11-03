@@ -8,11 +8,11 @@
 
   <ul *ngIf="!loading && !error" class="lista row m-0 p-0">
     <li *ngFor="let noticia of noticias" class="item p-0 col-12 col-md-6 col-lg-12 mb-3">
-        <img src="assets/{{ noticia.image }}" alt="" class="imagen-noticia">
+        <img [src]="noticia.image" alt="{{ noticia.title }}" class="imagen-noticia">
         <div class="noticia-content">
             <h3 class="noticia-titulo">{{ noticia.title }}</h3>
             <p class="noticia-descripcion">
-                {{ noticia.resumen }}
+                <span [innerHTML]="noticia.resumen"></span>
             </p>
             <div>
                 <button class="boton-noticia" (click)="goToNews(noticia.url, noticia.title)">

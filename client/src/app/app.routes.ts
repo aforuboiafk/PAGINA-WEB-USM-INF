@@ -16,6 +16,7 @@ import { NoticiaPlantillaComponent } from './elementos/noticia-plantilla/noticia
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { NoticiasComponent as AdminNoticiasComponent } from './admin/noticias/noticias.component';
 import { EventosComponent as AdminEventComponent } from './admin/eventos/eventos.component';
+import { GaleriaComponent as AdminGaleriaComponent } from './admin/galeria/galeria.component';
 import { EventoPlantillaComponent } from './elementos/evento-plantilla/evento-plantilla.component';
 import { EventosComponent } from './eventos/eventos.component';
 
@@ -43,6 +44,7 @@ export const routes: Routes = [
   { path: 'admin', component: DashboardComponent },
   { path: 'admin/noticias', component: AdminNoticiasComponent },
   { path: 'admin/eventos', component: AdminEventComponent },
+  { path: 'admin/galerias', component: AdminGaleriaComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' },
   { path: '**', redirectTo: '/inicio' } // Wildcard route for 404
 ];

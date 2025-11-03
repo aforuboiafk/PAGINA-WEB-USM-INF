@@ -5,13 +5,14 @@ import { QuillModule } from 'ngx-quill';
 import { EventsService } from '../../core/services/events.service';
 import { Event, CreateEventRequest, UpdateEventRequest } from '../../../assets/models/backendModels';
 import { HeroComponent } from '../../elementos/hero/hero.component';
+import { RouterLink } from '@angular/router';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-admin-eventos',
   standalone: true,
-  imports: [CommonModule, FormsModule, QuillModule, HeroComponent],
+  imports: [CommonModule, FormsModule, QuillModule, HeroComponent, RouterLink],
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css']
 })

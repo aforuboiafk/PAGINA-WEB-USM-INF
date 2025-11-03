@@ -21,7 +21,22 @@ router.get('/:id', async (req, res) => {
 // CREATE
 router.post('/', async (req, res) => {
   try {
-    const created = await prisma.news.create({ data: req.body });
+    const { title, ...rest } = req.body;
+    if (!title || typeof title !== 'string' || !title.trim()) {
+      return res.status(400).json({ message: 'Title is required' });
+    }
+    const slug = title
+      .toLowerCase()
+      .trim()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+    if (!slug) return res.status(400).json({ message: 'Invalid title' });
+    const created = await prisma.news.create({
+      data: { ...rest, title: title.trim(), url: slug }
+    });
     res.status(201).json(created);
   } catch (e) {
     res.status(400).json({ message: e.message });

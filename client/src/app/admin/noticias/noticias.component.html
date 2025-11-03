@@ -1,6 +1,11 @@
 <div class="admin-noticias">
   <header class="admin-header">
     <div>
+      <button class="btn btn-secondary" routerLink="/admin">
+      Volver
+      </button>
+    </div>
+    <div>
       <h1>Gestión de Noticias</h1>
       <p class="subtitle">Administra las noticias del departamento</p>
     </div>
@@ -56,10 +61,10 @@
             <td>
               <div class="d-flex gap-2 justify-content-center">
                 <button class="btn btn-sm btn-outline-primary" (click)="openEditModal(item)" title="Editar">
-                  <i class="bi bi-pencil"></i>
+                  Editar
                 </button>
                 <button class="btn btn-sm btn-outline-danger" (click)="deleteNews(item.id)" title="Eliminar">
-                  <i class="bi bi-trash"></i>
+                  Eliminar
                 </button>
               </div>
             </td>
